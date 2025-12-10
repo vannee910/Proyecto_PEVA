@@ -1,17 +1,13 @@
-# SCRIPT: objetos.R
-# DESCRIPCIÓN: Carga de librerías y definición de estructuras/plantillas fijas
 
-
-# 1. Cargar librerías
 library(readxl)
 library(dplyr)
 library(tidyr)
 library(tibble)
 library(ggplot2)
 library(openxlsx)
-library(stringr) # Ayuda con manejo de texto
+library(stringr)
 
-# 2. Plantilla Base para CAPITAL NETO (Estructura de filas)
+# Plantilla Base para CAPITAL NETO 
 plantilla_cn_base <- tribble(
   ~Concepto,                                                          ~Codigo_Banxico,
   "ACTIVOS SUJETOS A RIESGO TOTALES",                                 90001,
@@ -53,7 +49,7 @@ plantilla_cn_base <- tribble(
   "  (Info) Pérdidas Esperadas (Método Interno)",                     95695,
   "  (+) Reservas Computables (Método Interno - Tope 0.6%)",          NA,
   "  (Info) Reservas Admisibles (Método Estándar)",                   95704,
-  "  (Info) Pérdidas Esperadas (Método Estándar)",                    95708,
+  "  (Info) Pérdidas Esperadas (MÉtodo Estándar)",                    95708,
   "  (+) Reservas Computables (Método Estándar - Tope 1.25%)",        NA,
   
   "CAPITAL COMPLEMENTARIO",                                           NA,
@@ -64,9 +60,18 @@ plantilla_cn_base <- tribble(
   "ÍNDICE DE CAPITALIZACIÓN (ICAP)",                                  NA
 )
 
-# 3. Mapeo para RIESGO DE CRÉDITO
-# Sirve para traducir los textos del Excel a números operables
+# Mapeo para RIESGO DE CRÉDITO 
 mapa_ponderadores <- tibble(
   Ponderador_Texto = c("0 %", "10 %", "20 %", "50 %", "100 %", "115 %", "150 %"),
   Ponderador_Num   = c(0, 0.10, 0.20, 0.50, 1.00, 1.15, 1.50)
+)
+
+# Etiquetas para búsqueda en RESUMEN ICAP 
+etiquetas_icap <- list(
+  cap_neto = "CAPITAL NETO",
+  riesgo_cred = "Riesgo de Crédito",
+  riesgo_merc = "Riesgo de Mercado",
+  riesgo_oper = "Riesgo Operacional",
+  riesgo_tot  = "Riesgo Total",
+  icap_final  = "ICAP"
 )
