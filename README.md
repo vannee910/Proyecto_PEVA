@@ -21,3 +21,13 @@ git clone https://github.com/vannee910/Proyecto_PEVA.git
 
 # Instalar paquetes
 install.packages(c("dplyr", "shiny", "openxlsx"))
+
+## Aplicación Práctica
+Este proyecto simula procesos utilizados por el Banco de México para:
+- Supervisión bancaria
+- Evaluación de cumplimiento regulatorio
+- Análisis de estabilidad financiera
+
+## Autora
+Vanessa Anahí Pérez Espinoza | Estudiante de Física - UNAM
+Proyecto académico | Contacto: vanessa910@ciencias.unam.mx
